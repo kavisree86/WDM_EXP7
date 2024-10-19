@@ -67,15 +67,32 @@ def hits_algorithm(adjacency_matrix, max_iterations=100, tol=1.0e-6):
 # For simplicity, using a random adjacency matrix
 adj_matrix = np.array([
     [0, 1, 1],
-    [1, 0, 0],
-    [1, 0, 0]
+    [0, 0, 1],
+    [1, 1, 0]
 ])
 
 # Run HITS algorithm
 authority, hub = hits_algorithm(adj_matrix)
 for i in range(len(authority)):
     print(f"Node {i}: Authority Score = {authority[i]:.4f}, Hub Score = {hub[i]:.4f}")
+    
+i=0
+j=1
+for i in range(len(authority)):
+    
+    for j in range(len(authority)):
+        if(authority[i]>=authority[j]):
+            out=authority[i];
+            authority[i]=authority[j]
+            authority[j]=out
+        if(hub[i]>hub[j]):
+            out=hub[i]
+            hub[i]=hub[j]
+            hub[j]=out
 
+print("Ranking based on Hub Scores:")
+for i in range(len(authority)):
+    print("Rank" ,i+1,hub[i])
 # bar chart of authority vs hub scores
 
 nodes = np.arange(len(authority))
@@ -90,10 +107,12 @@ plt.xticks(nodes, [f'Node {i}' for i in nodes])
 plt.legend()
 plt.tight_layout()
 plt.show()
+
 ```
 
 ### Output:
-<img width="629" alt="image" src="https://github.com/user-attachments/assets/bfe75852-2925-406c-a67c-9ccd95f12a9b">
+![image](https://github.com/user-attachments/assets/96682525-bdc4-4285-b8d3-caabe3530fa7)
+
 
 
 ### Result:
