@@ -74,7 +74,7 @@ adj_matrix = np.array([
 # Run HITS algorithm
 authority, hub = hits_algorithm(adj_matrix)
 for i in range(len(authority)):
-    print(f"Node {i}: Authority Score = {authority[i]:.4f}, Hub Score = {hub[i]:.4f}")
+    print(f"Node {i+1}: Authority Score = {authority[i]:.4f}, Hub Score = {hub[i]:.4f}")
     
 i=0
 j=1
@@ -93,6 +93,9 @@ for i in range(len(authority)):
 print("Ranking based on Hub Scores:")
 for i in range(len(authority)):
     print("Rank" ,i+1,hub[i])
+print("Ranking based on Authority Scores:")
+for i in range(len(authority)):
+    print("Rank",i+1,hub[i])
 # bar chart of authority vs hub scores
 
 nodes = np.arange(len(authority))
@@ -111,7 +114,8 @@ plt.show()
 ```
 
 ### Output:
-![image](https://github.com/user-attachments/assets/96682525-bdc4-4285-b8d3-caabe3530fa7)
+<img width="445" alt="image" src="https://github.com/user-attachments/assets/46c45cb6-b528-43d1-ae93-5e1b61589ef4">
+
 
 
 
